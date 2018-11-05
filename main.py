@@ -48,10 +48,10 @@ async def on_ready():
 
 @bot.event
 async def on_message(message): 
-    if(message.author.name = 'livewire90210'):
+    if(message.author.name == 'livewire90210'):
         if("to be fair" in message.content.lower() or "tbf" in message.content.lower()):
             await message.channel.send("TO BE FAIR!....")
-    if(message.author.name = 'mleeneg'):
+    if(message.author.name == 'mleeneg'):
         parts = message.content.lower().split(' ')
         swore = [a in SWEAR_FILTER for a in parts]
         if(TRUE in swore):
