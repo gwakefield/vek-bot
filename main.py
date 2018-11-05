@@ -47,18 +47,20 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name=random.choice(VEK_STATUSES)))
 
 @bot.event
-async def on_message(message): 
+async def on_message(message):
+    print('on_message()')
     if(message.author.name == 'livewire90210'):
         if("to be fair" in message.content.lower() or "tbf" in message.content.lower()):
             await message.channel.send("TO BE FAIR!....")
     if(message.author.name == 'mleeneg'):
         parts = message.content.lower().split(' ')
         swore = [a in SWEAR_FILTER for a in parts]
-        if(TRUE in swore):
+        if(True in swore):
             await message.channel.send("Meng swore!!!")
 
 @bot.command()
 async def hello(ctx):
+    print('hello()')
     if heardYouCorrectly():
         await ctx.send('*creepy smile*')
     else:
