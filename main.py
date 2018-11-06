@@ -82,11 +82,19 @@ async def vek(ctx):
         await ctx.send('Me kiiiiiitty~!')
 
 @bot.command()
+async def slap(ctx):
+    await ctx.send(random.choice(VEK_SLAPS))
+
+@bot.command()
 async def directions(ctx):
     if heardYouCorrectly():
         await ctx.send(random.choice(VEK_DIRECTIONS))
     else:
         await ctx.send('Did you say dull erections??')
+
+@bot.command()
+async def kevface(ctx):
+    await ctx.send('https://media.giphy.com/media/9SIpKp1U2U8ANzNmYa/giphy.gif')
 
 @bot.command()
 async def favoriteband(ctx):
@@ -155,6 +163,8 @@ async def help(ctx):
 
     embed.add_field(name="!hello", value="Say hi to vek-bot", inline=False)
     embed.add_field(name="!vek", value="A vote of confidence for Kevin", inline=False)
+    embed.add_field(name="!kevface", value="It's scary, don't do it", inline=False)
+    embed.add_field(name="!slap", value="A Kevin needs a hard reboot now and then", inline=False)
     embed.add_field(name="!directions", value="Ask Kevin for directions", inline=False)
     embed.add_field(name="!favoriteband", value="Ask Kevin what his favorite band is", inline=False)
     embed.add_field(name="!insult [name]", value="Have Kevin provide you an insult!", inline=False)
