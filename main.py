@@ -48,8 +48,10 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    print('on_message() by ' + message.author.name)
-    if(message.author.name == 'livewire90210'):
+    if message.author.name == 'spam-bot':
+        pass
+
+    if(message.author.name == 'Livewire90210'):
         if("to be fair" in message.content.lower() or "tbf" in message.content.lower()):
             await message.channel.send("TO BE FAIR!....")
     if(message.author.name == 'mleeneg'):
