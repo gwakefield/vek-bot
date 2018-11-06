@@ -54,7 +54,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if message.author.name == 'spam-bot':
+    if message.author.name == bot.user.name:
         pass
 
     if(message.author.name == 'Livewire90210'):
