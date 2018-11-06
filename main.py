@@ -172,6 +172,6 @@ async def idle_task():
     print('idle_task() exit')
 
 # Run watcher
-bot.loop.create_task(idle_task())
+#bot.loop.create_task(idle_task())
 # Run bot
 bot.run(TOKEN)
