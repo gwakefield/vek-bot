@@ -39,7 +39,9 @@ def getGroupMembers(group):
 
 def getInsult():
     if random.random() < 0.5:
-        return f'{random.choice(VEK_NOUNS)}'
+        return f'{random.choice(VEK_NOUNS)} {random.choice(VEK_NOUNS_2)}'
+    else:
+        return f'{random.choice(VEK_NOUNS)} {random.choice(VEK_VERBS)} {random.choice(VEK_NOUNS)} {random.choice(VEK_NOUNS_2)}'
 
 @bot.event
 async def on_ready():
@@ -155,6 +157,7 @@ async def help(ctx):
     embed.add_field(name="!vek", value="A vote of confidence for Kevin", inline=False)
     embed.add_field(name="!directions", value="Ask Kevin for directions", inline=False)
     embed.add_field(name="!favoriteband", value="Ask Kevin what his favorite band is", inline=False)
+    embed.add_field(name="!insult [name]", value="Have Kevin provide you an insult!", inline=False)
     embed.add_field(name="!info", value="Details on the bot that is Kevin", inline=False)
     embed.add_field(name="!config", value="See instructions on configurating settings", inline=False)
 
