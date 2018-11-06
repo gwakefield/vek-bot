@@ -37,6 +37,12 @@ def getGroupMembers(group):
             members.append(member)
     return members
 
+def getInsult():
+    if random.random() < 0.5:
+        return f'{random.choice(VEK_NOUNS)} {random.choice(VEK_NOUNS_2)}'
+    else:
+        return f'{random.choice(VEK_NOUNS)} {random.choice(VEK_VERBS)} {random.choice(VEK_NOUNS)} {random.choice(VEK_NOUNS_2)}'
+
 @bot.event
 async def on_ready():
     print('Logged in as')
@@ -63,11 +69,10 @@ async def on_message(message):
 
 @bot.command()
 async def hello(ctx):
-    print('hello()')
     if heardYouCorrectly():
         await ctx.send('*creepy smile*')
     else:
-        await ctx.send(f'{ctx.message.author.name}, did you say you want some jello?')
+        await ctx.send(f'{ctx.message.author.mention}, did you say you want some jello?')
 
 @bot.command()
 async def vek(ctx):
@@ -89,6 +94,14 @@ async def favoriteband(ctx):
         await ctx.send('Led Zepplin. The greatest band of all time.')
     else:
         await ctx.send('Did you just say favorite man? That\'d be ' + random.choice(VEK_TARGETS))
+
+@bot.command()
+async def insult(ctx):
+    parts = ctx.message.content.split(' ')
+    if len(parts) < 2:
+        await ctx.send(getInsult())
+    else:
+        await ctx.send('@' + parts[1] + ' is a ' + getInsult())
 
 @bot.command()
 async def config(ctx):
@@ -130,7 +143,7 @@ async def info(ctx):
         embed.add_field(name="Server count", value=f"{len(bot.guilds)}")
 
         # Shows link to GitHub code
-        embed.add_field(name="GitHub", value="https://github.com/")
+        embed.add_field(name="GitHub", value="https://github.com/Meth962/vek-bot")
 
         await ctx.send(embed=embed)
 
@@ -143,6 +156,8 @@ async def help(ctx):
     embed.add_field(name="!hello", value="Say hi to vek-bot", inline=False)
     embed.add_field(name="!vek", value="A vote of confidence for Kevin", inline=False)
     embed.add_field(name="!directions", value="Ask Kevin for directions", inline=False)
+    embed.add_field(name="!favoriteband", value="Ask Kevin what his favorite band is", inline=False)
+    embed.add_field(name="!insult [name]", value="Have Kevin provide you an insult!", inline=False)
     embed.add_field(name="!info", value="Details on the bot that is Kevin", inline=False)
     embed.add_field(name="!config", value="See instructions on configurating settings", inline=False)
 
