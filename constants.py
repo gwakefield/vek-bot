@@ -3,3 +3,6 @@ VEK_DIRECTIONS = ['Go left, then right, next left, then right...','Check north, 
 VEK_BODILY_FUNCTIONS = ['BURRRPPPPPP!','burp-Burrrrrrp~!','Braaap!','HIC!','HICCUP!','AAHHHCHOOOOO!']
 VEK_TARGETS = ['Burgener', 'Meng']
 SWEAR_FILTER = ['fuck','shit','ass','bitch','dick','cunt','damn','goddamn']
+VEK_NOUNS = []
+VEK_VERBS = []
+VEK_NOUNS_2 = []

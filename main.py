@@ -63,7 +63,6 @@ async def on_message(message):
 
 @bot.command()
 async def hello(ctx):
-    print('hello()')
     if heardYouCorrectly():
         await ctx.send('*creepy smile*')
     else:
