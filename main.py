@@ -37,6 +37,10 @@ def getGroupMembers(group):
             members.append(member)
     return members
 
+def getInsult():
+    if random.random() < 0.5:
+        return f'{random.choice(VEK_NOUNS)}'
+
 @bot.event
 async def on_ready():
     print('Logged in as')
@@ -48,13 +52,14 @@ async def on_ready():
 
 @bot.event
 async def on_message(message): 
-    if(message.author.name = 'livewire90210'):
+    if message.author.name == "livewire90210":
         if("to be fair" in message.content.lower() or "tbf" in message.content.lower()):
             await message.channel.send("TO BE FAIR!....")
-    if(message.author.name = 'mleeneg'):
+
+    if message.author.name == 'mleeneg':
         parts = message.content.lower().split(' ')
         swore = [a in SWEAR_FILTER for a in parts]
-        if(TRUE in swore):
+        if(True in swore):
             await message.channel.send("Meng swore!!!")
 
 @bot.command()
@@ -62,7 +67,7 @@ async def hello(ctx):
     if heardYouCorrectly():
         await ctx.send('*creepy smile*')
     else:
-        await ctx.send(f'{ctx.message.author.name}, did you say you want some jello?')
+        await ctx.send(f'{ctx.message.author.mention}, did you say you want some jello?')
 
 @bot.command()
 async def vek(ctx):
@@ -84,6 +89,14 @@ async def favoriteband(ctx):
         await ctx.send('Led Zepplin. The greatest band of all time.')
     else:
         await ctx.send('Did you just say favorite man? That\'d be ' + random.choice(VEK_TARGETS))
+
+@bot.command()
+async def insult(ctx):
+    parts = ctx.message.content.split(' ')
+    if len(parts) < 2:
+        await ctx.send(getInsult())
+    else:
+        await ctx.send('@' + parts[1] + ' is a ' + getInsult())
 
 @bot.command()
 async def config(ctx):
@@ -125,7 +138,7 @@ async def info(ctx):
         embed.add_field(name="Server count", value=f"{len(bot.guilds)}")
 
         # Shows link to GitHub code
-        embed.add_field(name="GitHub", value="https://github.com/")
+        embed.add_field(name="GitHub", value="https://github.com/Meth962/vek-bot")
 
         await ctx.send(embed=embed)
 
@@ -138,6 +151,7 @@ async def help(ctx):
     embed.add_field(name="!hello", value="Say hi to vek-bot", inline=False)
     embed.add_field(name="!vek", value="A vote of confidence for Kevin", inline=False)
     embed.add_field(name="!directions", value="Ask Kevin for directions", inline=False)
+    embed.add_field(name="!favoriteband", value="Ask Kevin what his favorite band is", inline=False)
     embed.add_field(name="!info", value="Details on the bot that is Kevin", inline=False)
     embed.add_field(name="!config", value="See instructions on configurating settings", inline=False)
 
